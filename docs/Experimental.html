@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 4 Experimental Procedure | Lab 2: Semiconductor Device Characterization</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 4 Experimental Procedure | Lab 2: Semiconductor Device Characterization" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 4 Experimental Procedure | Lab 2: Semiconductor Device Characterization" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Juan M. Rivas and Sanghyeon Park" />
+
+
+<meta name="date" content="2020-07-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Checklist.html"/>
+<link rel="next" href="acknowledgments.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
+<li class="chapter" data-level="2" data-path="Introduction.html"><a href="Introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="Checklist.html"><a href="Checklist.html"><i class="fa fa-check"></i><b>3</b> Checklist</a></li>
+<li class="chapter" data-level="4" data-path="Experimental.html"><a href="Experimental.html"><i class="fa fa-check"></i><b>4</b> Experimental Procedure</a><ul>
+<li class="chapter" data-level="4.1" data-path="Experimental.html"><a href="Experimental.html#subsec:stschottky"><i class="fa fa-check"></i><b>4.1</b> STPS2H100ZFY Schottky Diode Characterization</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Experimental.html"><a href="Experimental.html#subsubsecVIst"><i class="fa fa-check"></i><b>4.1.1</b> Obtain the V-I of the device from manufacturer-provided SPICE model</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Experimental.html"><a href="Experimental.html#subusubsec:VISpicecomp"><i class="fa fa-check"></i><b>4.1.2</b> Extract V-I curve data from the datasheet and compare to SPICE model</a></li>
+<li class="chapter" data-level="4.1.3" data-path="Experimental.html"><a href="Experimental.html#subsubsec:VImeas"><i class="fa fa-check"></i><b>4.1.3</b> Extract V-I curve data from experimental measurements.</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Experimental.html"><a href="Experimental.html#subsub:Simpsimmod"><i class="fa fa-check"></i><b>4.1.4</b> Simplified simulation model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Experimental.html"><a href="Experimental.html#sub:Mosfet"><i class="fa fa-check"></i><b>4.2</b> MOSFET Characterization</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="Experimental.html"><a href="Experimental.html#subsub:InfineonMos"><i class="fa fa-check"></i><b>4.2.1</b> BSR202N MOSFET Characterization</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Experimental.html"><a href="Experimental.html#subusb:FQTMOS"><i class="fa fa-check"></i><b>4.2.2</b> FQT4N25TF MOSFET Characterization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="Experimental.html"><a href="Experimental.html#sub:tempmeas"><i class="fa fa-check"></i><b>4.3</b> Effects of Temperature on MOSFETs and Diodes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i><b>5</b> Acknowledgments</a></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lab 2: Semiconductor Device Characterization</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Experimental" class="section level1">
+<h1><span class="header-section-number">Section 4</span> Experimental Procedure</h1>
+<p>You will be using the three devices listed in Table <a href="Introduction.html#tab:devtab">2.1</a> throughout the course.
+In this lab, you will compare each device’s V-I curve in the datasheet with the V-I curve extracted from the SPICE simulation model provided by the manufacturer, and the data obtained by direct measurement.
+Moreover, You will develop a simplified LTSPICE model for each of the devices that you will use in subsequent lab sessions.
+When you’re injecting a current into a device, always keep in mind the current limit specified in the datasheet so as not to cause over-current damage.</p>
+<div id="subsec:stschottky" class="section level2">
+<h2><span class="header-section-number">4.1</span> STPS2H100ZFY Schottky Diode Characterization</h2>
+<p>The diode to be used in this section is STPS2H100ZFY (Figure <a href="Experimental.html#fig:STschottky">4.1</a>). You can find the data sheet <a href="https://www.st.com/resource/en/datasheet/stps2h100zfy.pdf">here</a>.</p>
+<div class="figure"><span id="fig:STschottky"></span>
+<img src="Figs/STPS2H100ZFY.jpg" alt="STPS2H100ZFY Si Schottky diode manufactured by STMicroelectronics"  />
+<p class="caption">
+Figure 4.1: STPS2H100ZFY Si Schottky diode manufactured by STMicroelectronics
+</p>
+</div>
+<div id="subsubsecVIst" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Obtain the V-I of the device from manufacturer-provided SPICE model</h3>
+<p>The manufacturer STMicroelectronics provides a ZIP file containing many of their devices’ SPICE
+model.
+You can access the manufacturer’s website <a href="https://www.st.com/en/diodes-and-rectifiers/stps2h100zfy.html">here</a>.<br />
+Scroll down to find the corresponding ZIP file.
+If you’re using a CUI interface, you can include the library file in your simulation with the <em>.LIB</em> command.
+If you’re using a GUI interface, this link will tell you a simple way to create a symbol for the simulation.</p>
+<p>In LTSPICE do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Connect a voltage source to the model of the diode in the library containing the device models.</li>
+<li>Run a dc source sweep analysis (.DC) that will evaluate the circuit for different values of the source voltage.
+Ensure that temperature is at 25◦C.</li>
+<li>Plot the V-I curve.
+In subsequent parts, when evaluating the models of the MOSFET you will
+need to run .DC analysis and it is possible to sweep two sources at a time.</li>
+<li>Export the LTSPICE data to a <em>.txt</em> file</li>
+</ol>
+<p>Figure <a href="Experimental.html#fig:LTspiceVIcurve">4.2</a> shows the LTSPICE file and plot of the resulting V-I curves at 25◦C. The temperatures
+simulated were selected to match the data provided in the device datasheet.</p>
+<div class="figure"><span id="fig:LTspiceVIcurve"></span>
+<img src="Figs/LTspice_VIcurves_v2.png" alt="LTSPICE file to obtain the simulated V-I curve of the STPS8H100 diode (it’s a different diode by the way, which we use only for an example).  .DC analysis is used to vary the amplitude of the input source to obtain the V-Icurve.  Note that the current in the simulation graph exceeds the diode’s rating.  You wouldn’t run such high currentthrough the device" width="629" />
+<p class="caption">
+Figure 4.2: LTSPICE file to obtain the simulated V-I curve of the STPS8H100 diode (it’s a different diode by the way, which we use only for an example). .DC analysis is used to vary the amplitude of the input source to obtain the V-Icurve. Note that the current in the simulation graph exceeds the diode’s rating. You wouldn’t run such high currentthrough the device
+</p>
+</div>
+</div>
+<div id="subusubsec:VISpicecomp" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Extract V-I curve data from the datasheet and compare to SPICE model</h3>
+<p>Figure 7 of the STPS2H100ZFY datasheet, titled <em>“Forward voltage drop versus forward current”</em>, shows a plot of the the typical forward voltage vs. instantaneous current, the I-V Curve.
+Compare the plot from the datasheet to that obtained in Section <a href="Experimental.html#subsubsecVIst">4.1.1</a></p>
+<p>You can use <em>Engauge Digitizer</em>, to extract data from a datasheet plot.
+The software will enable you to generate a numerical table of values from a plot in an image format.
+Engauge Digitizer is an open source software available <a href="https://markummitchell.github.io/engauge-digitizer/">here</a></p>
+<ul>
+<li>The program will require you to input the coordinate system that matches that of the datasheet plot (polar, Cartesian, log, etc.).</li>
+<li>You will then provide three reference points to calibrate the coordinate system.</li>
+<li>You can digitize selected data points along the curve.</li>
+<li>Data points can be exported to a <em>.csv</em> file for comparison with data obtained from other sources.</li>
+</ul>
+<p>Figure <a href="Experimental.html#fig:EngaugeSTPS8H">4.3</a> shows an Engauge screenshot of the datasheet V-I curve of the STPS8H100 diode.
+Notice the vertical axis in the figure is in LOG</p>
+<div class="figure"><span id="fig:EngaugeSTPS8H"></span>
+<img src="Figs/Engauge_STPS8H100.png" alt="Digitizing the25◦C V-I curve of the STPS8H100 diode" width="348" />
+<p class="caption">
+Figure 4.3: Digitizing the25◦C V-I curve of the STPS8H100 diode
+</p>
+</div>
+<p>Figure <a href="Experimental.html#fig:VIcompDSSpice">4.4</a> shows the V-I curve from data obtained from the SPICE model and the datasheet at 25C.
+Notice there are significant differences between the two sets of data, even though both are provided by the manufacturer.
+As it happens, big portions of the data on device datasheet of power components, is data obtained at an ambient temperature of 25C, an unreasonable assumption for realistic power electronics applications.</p>
+<div class="figure"><span id="fig:VIcompDSSpice"></span>
+<img src="Figs/vi_st_25.png" alt="Comparison  of  the  STPS8H100  diode  V-I  curves  obtained  from  the  datasheet  and  the  device’s  SPICEMODEL." width="280" />
+<p class="caption">
+Figure 4.4: Comparison of the STPS8H100 diode V-I curves obtained from the datasheet and the device’s SPICEMODEL.
+</p>
+</div>
+</div>
+<div id="subsubsec:VImeas" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Extract V-I curve data from experimental measurements.</h3>
+<p>Measure the V-I curve for the STPS2H100ZFY diode experimentally.
+Here, you will apply a controlled current through the diode and measure the voltage drop across the device terminals.
+Do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Set the maximum limit of the power supply to a low level, 2 V or 3 V should be sufficient.
+From the the V-I curve in the STPS2H100ZFY datasheet we know that the maximum forward drop at 10 A is about 1 V.</li>
+<li>Set the current setting of the power supply to a very low output. The objective here is to have the power supply to be current limited so as you can set the current flowing through your device.</li>
+<li>Connect the power supply to the diode (Fig. <a href="Experimental.html#fig:VIdiodesetup">4.5</a>) and start varying the current setting in the power supply to measure the forward voltage drop in your device. Do not rely on the power supply’s voltmeter for your measurement.
+Use a digital multimeter (DMM) instead. This is because the power supply’s voltmeter is also reading the voltage drop across the “long” wires in your experimental setup.</li>
+</ol>
+<div class="figure"><span id="fig:VIdiodesetup"></span>
+<img src="Figs/VIdiodesetup.svg" alt="Experiment setup for diode characterization"  />
+<p class="caption">
+Figure 4.5: Experiment setup for diode characterization
+</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>Perform the V-I measurements at ambient temperature. The power dissipated in the diode while you do the measurement will increase the temperature of the device. Take this into consideration when making your measurements. It is best to take a voltage reading with a short pulse at a given temperature to avoid data being skewed by self-heating.</li>
+<li>Compare the data obtained experimentally the data obtained in Sections <a href="Experimental.html#subsubsecVIst">4.1.1</a> and <a href="Experimental.html#subusubsec:VISpicecomp">4.1.2</a>.</li>
+</ol>
+</div>
+<div id="subsub:Simpsimmod" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> Simplified simulation model</h3>
+<p>The device model supplied by power semiconductor manufacturers is usually a complex physics-based model.
+In power electronics, the power semiconductors are not used in the linear region, but as nonlinear switches.
+Physics-based model can be accurate, but sometimes lead to convergence issues in the simulator, particularly in systems having several nonlinear devices.
+Even without a convergence issue, using the manufacturer-provided model guarantees to slow down your simulation unnecessarily, sometimes even pointlessly.</p>
+<p>It is thus desirable to develop simplified simulation models that capture the essential loss mechanisms in the circuit but are not numerically intensive.
+Figure <a href="Experimental.html#fig:vidiodesim">4.6</a> shows a simplified simulation model that captures the essential characteristics of the V-I curve of a diode.
+Moreover, LTSPICE provides a simple way to enter the data of such a device in a very concise manner.</p>
+<div class="figure"><span id="fig:vidiodesim"></span>
+<img src="Figs/vidiodesim.svg" alt="Simplified simulation model for the diode."  />
+<p class="caption">
+Figure 4.6: Simplified simulation model for the diode.
+</p>
+</div>
+<p>This is how you enter the model for an idealized diode called “MyIdealDiode” with RON = 0.1 <span class="math inline">\(\Omega\)</span> and VFWD=0.4V.
+In this example the diode D1 is connected to nodes SW and OUT.</p>
+<pre><code>D1 SW OUT MyIdealDiode
+.model MyIdealDiode D(Ron=.1 Roff=1Meg Vfwd=.4)</code></pre>
+<p>Using the measured data obtained in Section <a href="Experimental.html#subsubsec:VImeas">4.1.3</a> do the following:</p>
+<ul>
+<li>Propose values for RON and VFWD for the simplified simulation diode model of Fig. <a href="Experimental.html#fig:vidiodesim">4.6</a>.</li>
+<li>Write your very personal simplified diode model for future simulations.</li>
+<li>Simulate your model to obtain the V-I curves.</li>
+<li>Compare your model to the data obtained from the datasheet, the manufacturer SPICE model, and experimental measurement. As an example, Fig. <a href="Experimental.html#fig:vistall25">4.7</a> shows a comparison of the data available up to this point for the STPS8H100 at 25C.</li>
+</ul>
+<div class="figure"><span id="fig:vistall25"></span>
+<img src="Figs/vi_st_all25.png" alt="Comparison of the V-I Curves of the STPS8H100 diode at25◦C." width="280" />
+<p class="caption">
+Figure 4.7: Comparison of the V-I Curves of the STPS8H100 diode at25◦C.
+</p>
+</div>
+</div>
+</div>
+<div id="sub:Mosfet" class="section level2">
+<h2><span class="header-section-number">4.2</span> MOSFET Characterization</h2>
+<div id="subsub:InfineonMos" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> BSR202N MOSFET Characterization</h3>
+<p>The MOSFET used in this section is the BSR202N (Figure <a href="Experimental.html#fig:MOSBSR202N">4.8</a>).
+You can find the webpage for this MOSFET as well as a lin for the SPCE simulation model <a href="https://www.infineon.com/cms/en/product/power/mosfet/-250v-600v-small-signal-small-power-mosfet/bsr202n/">here</a>.</p>
+<div class="figure"><span id="fig:MOSBSR202N"></span>
+<img src="Figs/BSR202N.jpg" alt="BSR202N MOSFET manufactured by Infineon Technologies."  />
+<p class="caption">
+Figure 4.8: BSR202N MOSFET manufactured by Infineon Technologies.
+</p>
+</div>
+<p>A power MOSFET is a 3-teminal device consisting of a gate, drain, and source (most power MOSFET s are vertical devices where the bulk is shorted to the source terminal).
+The power MOSFET has an anti-parallel body diode which has the same current ratings of the MOSFET as it is intrinsic to the structure.</p>
+<p>In power electronics we operate the MOSFET as a switch, which corresponds to an operation between the <em>“triode”</em> and the <em>“cut-off”</em> region of the V-I curve of the MOSFET.
+In the <em>“triode”</em> region, we can think of the MOSFET as behaving like a voltage-controlled resistor.
+The value of <em>“resistor”</em> is a function of the gate-source voltage.
+To minimize conduction loss in power electronics applications, we turn the MOSFET on with as large <em>vgs</em> as possible to minimize the equivalent RON.
+The maximum allowed <em>Vgs</em> can be found in a device’s datasheet and it is usually in the range of a few to low tens of volts in power devices.
+Because of the body diode, current is able to flow from the source to the drain of the MOSFET regardless of whether a gate signal is present and only depending on the external circuit conditions.
+Figure <a href="Experimental.html#fig:mosfetvisimp">4.9</a> shows a functional and simplified model of the MOSFET.</p>
+<div class="figure"><span id="fig:mosfetvisimp"></span>
+<img src="Figs/mosfetvisimp.svg" alt="Simplified model for a power MOSFET"  />
+<p class="caption">
+Figure 4.9: Simplified model for a power MOSFET
+</p>
+</div>
+<ol style="list-style-type: decimal">
+<li>Obtain the V-I of the device from manufacturer device SPICE model.
+Figure <a href="Experimental.html#fig:VIMOSFETSIMAmbient">4.10</a> shows the V-I curve obtained from the MOSFET model.</li>
+</ol>
+<div class="figure"><span id="fig:VIMOSFETSIMAmbient"></span>
+<img src="Figs/ViMOSFET_SIMULATED_AMBIENT.png" alt="V-I curve from the manufacturer’s SPICEmodel of the IPA60R600P6 MOSFETas an example (again, it isa different device from BSR202N and is only shown as an example)" width="894" />
+<p class="caption">
+Figure 4.10: V-I curve from the manufacturer’s SPICEmodel of the IPA60R600P6 MOSFETas an example (again, it isa different device from BSR202N and is only shown as an example)
+</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Extract V-I curve data from the datasheet and compare to SPICE model.</li>
+<li>Extract V-I curve data from experimental measurements.
+The setup to measure the V-I curve is shown in Fig. <a href="Experimental.html#fig:VIMosfetsetup">4.11</a>.
+When measuring the V-I characteristics of the anti-parallel diode, make sure the gate to source voltage of the MOSFET is zero to ensure that no current flows via the channel.</li>
+</ol>
+<div class="figure"><span id="fig:VIMosfetsetup"></span>
+<img src="Figs/VIMosfetsetup.svg" alt="Experimental setup to measure the V-I Curve of a MOSFET."  />
+<p class="caption">
+Figure 4.11: Experimental setup to measure the V-I Curve of a MOSFET.
+</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>Develop a simplified simulation model and compare the V-I curves and the manufacturer’s SPICE model.
+Figure <a href="Experimental.html#fig:idealswLTspice">4.12</a> explains how to use the ideal switch element in Figure <a href="Experimental.html#fig:mosfetvisimp">4.9</a>.</li>
+</ol>
+<div class="figure"><span id="fig:idealswLTspice"></span>
+<img src="Figs/ideal_sw_LTspice.png" alt="An example schematic drawing and the corresponding netlist. The schematic shows an ideal switch ‘S1’, agate drive voltage source ‘Vgatedriver’, and the definition of a switch model named ‘MyIdealSW’. The definition of‘MyIdealSW’ specifies the on-resistance of 0.02Ω, the off-resistance of 1 GΩ, the turn-on threshold of 0.5 V, and thehysteresis of 0.4 V in the turn-on threshold.  Later, you may change the on-time and the frequency of ‘Vgatedriver’to fit your purpose in lab sessions to come." width="772" />
+<p class="caption">
+Figure 4.12: An example schematic drawing and the corresponding netlist. The schematic shows an ideal switch ‘S1’, agate drive voltage source ‘Vgatedriver’, and the definition of a switch model named ‘MyIdealSW’. The definition of‘MyIdealSW’ specifies the on-resistance of 0.02Ω, the off-resistance of 1 GΩ, the turn-on threshold of 0.5 V, and thehysteresis of 0.4 V in the turn-on threshold. Later, you may change the on-time and the frequency of ‘Vgatedriver’to fit your purpose in lab sessions to come.
+</p>
+</div>
+</div>
+<div id="subusb:FQTMOS" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> FQT4N25TF MOSFET Characterization</h3>
+<p>Refer to the experiment procedure of <a href="Experimental.html#subsub:InfineonMos">4.2.1</a> to obtain two I-V curves, one from the measurement
+and another from your custom-made SPICE models, for a FQT4N25TF MOSFET (Figure <a href="Experimental.html#fig:FQT4N25TF">4.13</a>).
+Be careful not to exceed the current limit as it is only rated for 0.83 A.</p>
+<div class="figure"><span id="fig:FQT4N25TF"></span>
+<img src="Figs/FQT4N25TF.jpg" alt="FQT4N25TF MOSFET manufactured by ON Semiconductor."  />
+<p class="caption">
+Figure 4.13: FQT4N25TF MOSFET manufactured by ON Semiconductor.
+</p>
+</div>
+</div>
+</div>
+<div id="sub:tempmeas" class="section level2">
+<h2><span class="header-section-number">4.3</span> Effects of Temperature on MOSFETs and Diodes</h2>
+<p>Switches increase in temperature from prolonged use, which greatly impacts the parasitic resistances of our equivalent models.
+The FQT4N25TF has a body diode as well, so we will be using this part to determine the effects of temperature on MOSFETS and diodes.
+For the FQT4N25TF MOSFET do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Perform the V-I measurements at three different temperatures within the operational limits of the device (&lt; 150C) than ambient temperature by using the hot plate, and compare them with the V-I measurements at ambient temperature you acquired in the previous section.
+Use a clamp to keep the device from moving.
+Do not rely on the hot plate’s temperature readout but use an infrared thermometer or thermal camera to verify the temperature.
+<strong>Safety first!</strong>
+Be careful when making these measurements.
+When using the hotplate, please leave a sign indicating the hot plate is <em>“hot”</em> to avoid other people getting hurt.</li>
+<li>From V-I measurements, estimate the on-resistance Rdiode,ON, the forward voltage drop Vd,fwd of the anti-parallel diode, and the R DS,ON when the device is fully turned on.
+Plot three V-I curves at three different temperatures.
+When measuring the V-I characteristics of the anti-parallel diode, make sure the gate to source voltage of the MOSFET is zero to ensure that no current flows via the channel.</li>
+<li>Observe how RDS,ON , Rdiode,ON , V d,f wd change with temperature and derive a simple linear model for each parameter.</li>
+<li>Compare on a single plot the variation of RDS,ON with temperature to the data provided in the datasheet.</li>
+<li>Propose a way to incorporate the parameter temperature dependence into your LTspice model.
+Use the device temperature as an input parameter.</li>
+</ol>
+<div class="figure"><span id="fig:clampex"></span>
+<img src="Figs/clamp_example.png" alt="An example of how to clamp up the MOSFET onto the hot plate.  Remember to be very careful and uselots of Kapton tape to make sure nothing is shorting!" width="339" />
+<p class="caption">
+Figure 4.14: An example of how to clamp up the MOSFET onto the hot plate. Remember to be very careful and uselots of Kapton tape to make sure nothing is shorting!
+</p>
+</div>
+<div class="figure"><span id="fig:vimosfetalltemp"></span>
+<img src="Figs/vi_mosfet_alltemp.png" alt="A comparison of the V-I Curves of the IPA60R600P6 at various temperatures." width="280" />
+<p class="caption">
+Figure 4.15: A comparison of the V-I Curves of the IPA60R600P6 at various temperatures.
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Checklist.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="acknowledgments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bkdwnlab2.pdf", "bkdwnlab2.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

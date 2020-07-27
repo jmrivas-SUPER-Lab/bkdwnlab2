@@ -1,0 +1,15 @@
+
+# Checklist {#Checklist}
+For the lab session _check-off,_ you should upload the following data to Canvas. 
+There’s no experimental demo required in this session. 
+Put all materials in a single PDF file with your name(s) and
+the lab session title at the top _(Total points: 10)_.
+
+The checklist consists of five plots and four custom-made SPICE model definitions:
+
+1. _(2 points)_ A plot showing four IV curves of a STPS2H100ZFY diode _(STMicroelectronics)_, each obtained from the manufacturer-provided SPICE model, the datasheet, the measurement, and your custom SPICE model;
+2. _(2 points)_ A plot showing four IV curves of a BSR202N MOSFET _(Infineon Technologies)_ in a fully-on state, each obtained from the manufacturer-provided SPICE model, the datasheet, the measurement, and your custom SPICE model;
+3. _(1 point)_ A plot showing two IV curves of a FQT4N25TF MOSFET _(ON Semiconductor)_ in a fully-on state, one obtained from the measurement and another from your custom SPICE model;
+4. _(1.5 points)_ A plot comparing three IV curves of a fully-on FQT4N25TF MOSFET measured at three different temperatures to those from your improved custom SPICE model where the temperature variation is considered;
+5. _(1.5 points)_ A plot comparing R DS,ON values of a fully-on FQT4N25TF MOSFET measured at three different temperatures to those provided in the datasheet;
+6. _(2 points)_ Your custom-made SPICE model definitions of STPS2H100ZFY, BSR202N, FQT4N25TF, and the improved version of FQT4N25TF model in which the temperature variation is considered.

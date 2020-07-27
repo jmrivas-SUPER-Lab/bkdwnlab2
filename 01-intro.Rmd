@@ -1,21 +1,34 @@
-# Introduction {#intro}
+ 
+# Introduction {#Introduction}
+Semiconductor devices, for example, diodes, MOSFETs, Insulated Gate Bipolar Transistors (IGBTs), and thyristors, are essential components of switch-mode power electronics such as dc-dc converters and dc-ac inverters, and in general any power electronics system.
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+Conceptually at early stages of a design, it is correct to assume the idealized behaviour of the semiconductor devices and treat them as ideal switches, with no loss or voltage drop when _“on”_, and no current when _“off”_. 
+Unfortunately, semiconductor devices are non-ideal components.
+These _non-idealities_ result in lower efficiency, deviation from designed operating parameters, and thermal component failure if losses are not properly taken care of.
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+Thus, before implementing a converter design, we should model the semiconductor devices
+to account for their parasitics and loss mechanisms, and incorporate them into the simulation. 
+This way, the simulation will properly anticipate output power, efficiency, and operating parameters of
+the converter. 
+Some manufacturers provide models of their semiconductors which can be useful in
+simulation. 
+However, sometimes the models do not properly capture the operation of the device under specific design conditions and tend to be computationally intensive.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
+There are two important losses associated with power semiconductors, namely _switching loss_ and _conduction loss_. 
+The _conduction loss_ can be evaluated by using the relationship between voltage and current of the device under current conduction, namely the V-I curve.
+In this lab, we will experimentally model three different semiconductor devices [see Table \@ref(tab:devtab)] based on current and voltage measurements and compare the results with manufacturer information found in datasheets. 
+We will also explore the temperature dependency of these curves. 
+**This data will be used to create simplified SPICE models of the devices. You will use those models to simulate various circuits throughout the course.**  
+
+
+
+```{r devtab, echo=FALSE}
+library(knitr)
+mfr <- c("STMicroelectronics", "Infineon Technologis", "ON Semiconductors")
+Prtnum <- c("STPS2H100ZFY", "BSR2020N", "FQT4N25TF")
+Device <- c("Schottky Diode", "Si N-channel MOSFET", "Si N-channel MOSFET")
+Rating <- c("100V/2 A", "20V/3.8 A", "250V/0.83 A")
+devarray <- data.frame(mfr, Prtnum, Device, Rating)
+names(devarray) <- c("Manufacturer", "Part Number", "Device", "Rating")
+kable(devarray[1:3,], booktabs = TRUE, caption = 'List of components used in this lab')
 ```
-
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].

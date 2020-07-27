@@ -1,0 +1,230 @@
+
+# Experimental Procedure {#Experimental}
+You will be using the three devices listed in Table \@ref(tab:devtab) throughout the course. 
+In this lab, you will compare each device’s V-I curve in the datasheet with the V-I curve extracted from the SPICE simulation model provided by the manufacturer, and the data obtained by direct measurement.
+Moreover, You will develop a simplified LTSPICE model for each of the devices that you will use in subsequent lab sessions. 
+When you’re injecting a current into a device, always keep in mind the current limit specified in the datasheet so as not to cause over-current damage.
+
+## STPS2H100ZFY Schottky Diode Characterization {#subsec:stschottky}
+
+The diode to be used in this section is STPS2H100ZFY (Figure \@ref(fig:STschottky)). You can find the data sheet [here](https://www.st.com/resource/en/datasheet/stps2h100zfy.pdf).
+
+
+```{r STschottky, echo = FALSE, fig.cap="STPS2H100ZFY Si Schottky diode manufactured by STMicroelectronics"}
+knitr::include_graphics("Figs/STPS2H100ZFY.jpg", error = FALSE)
+``` 
+
+
+
+### Obtain the V-I of the device from manufacturer-provided SPICE model {#subsubsecVIst}
+
+The manufacturer STMicroelectronics provides a ZIP file containing many of their devices’ SPICE
+model. 
+You can access the manufacturer’s website [here](https://www.st.com/en/diodes-and-rectifiers/stps2h100zfy.html).  
+Scroll down to find the corresponding ZIP file. 
+If you’re using a CUI interface, you can include the library file in your simulation with the _.LIB_ command. 
+If you’re using a GUI interface, this link will tell you a simple way to create a symbol for the simulation.
+
+In LTSPICE do the following:
+
+1. Connect a voltage source to the model of the diode in the library containing the device models.
+2. Run a dc source sweep analysis (.DC) that will evaluate the circuit for different values of the source voltage. 
+Ensure that temperature is at 25◦C.
+3. Plot the V-I curve. 
+In subsequent parts, when evaluating the models of the MOSFET you will
+need to run .DC analysis and it is possible to sweep two sources at a time.
+4. Export the LTSPICE data to a _.txt_ file
+
+
+Figure \@ref(fig:LTspiceVIcurve) shows the LTSPICE file and plot of the resulting V-I curves at 25◦C. The temperatures
+simulated were selected to match the data provided in the device datasheet.
+
+
+```{r LTspiceVIcurve, echo = FALSE, fig.cap="LTSPICE file to obtain the simulated V-I curve of the STPS8H100 diode (it’s a different diode by the way, which we use only for an example).  .DC analysis is used to vary the amplitude of the input source to obtain the V-Icurve.  Note that the current in the simulation graph exceeds the diode’s rating.  You wouldn’t run such high currentthrough the device"}
+knitr::include_graphics("Figs/LTspice_VIcurves_v2.png", error = FALSE)
+```
+
+
+
+
+
+### Extract V-I curve data from the datasheet and compare to SPICE model {#subusubsec:VISpicecomp}
+Figure 7 of the STPS2H100ZFY datasheet, titled _“Forward voltage drop versus forward current”_, shows a plot of the the typical forward voltage vs. instantaneous current, the I-V Curve.
+Compare the plot from the datasheet to that obtained in Section \@ref(subsubsecVIst)
+
+
+You can use _Engauge Digitizer_, to extract data from a datasheet plot. 
+The software will enable you to generate a numerical table of values from a plot in an image format. 
+Engauge Digitizer is an open source software available [here](https://markummitchell.github.io/engauge-digitizer/)
+
+- The program will require you to input the coordinate system that matches that of the datasheet plot (polar, Cartesian, log, etc.).
+- You will then provide three reference points to calibrate the coordinate system.
+- You can digitize selected data points along the curve.
+- Data points can be exported to a _.csv_ file for comparison with data obtained from other sources.
+
+Figure \@ref(fig:EngaugeSTPS8H) shows an Engauge screenshot of the datasheet V-I curve of the STPS8H100 diode.
+Notice the vertical axis in the figure is in LOG
+
+```{r EngaugeSTPS8H, echo = FALSE, fig.cap="Digitizing the25◦C V-I curve of the STPS8H100 diode"}
+knitr::include_graphics("Figs/Engauge_STPS8H100.png", error = FALSE)
+```
+
+
+Figure \@ref(fig:VIcompDSSpice) shows the V-I curve from data obtained from the SPICE model and the datasheet at 25C. 
+Notice there are significant differences between the two sets of data, even though both are provided by the manufacturer. 
+As it happens, big portions of the data on device datasheet of power components, is data obtained at an ambient temperature of 25C, an unreasonable assumption for realistic power electronics applications.
+
+```{r VIcompDSSpice, echo = FALSE,  fig.cap="Comparison  of  the  STPS8H100  diode  V-I  curves  obtained  from  the  datasheet  and  the  device’s  SPICEMODEL."}
+knitr::include_graphics("Figs/vi_st_25.png", error = FALSE)
+```
+
+### Extract V-I curve data from experimental measurements. {#subsubsec:VImeas}
+Measure the V-I curve for the STPS2H100ZFY diode experimentally. 
+Here, you will apply a controlled current through the diode and measure the voltage drop across the device terminals. 
+Do the following:
+
+1. Set the maximum limit of the power supply to a low level, 2 V or 3 V should be sufficient. 
+From the the V-I curve in the STPS2H100ZFY datasheet we know that the maximum forward drop at 10 A is about 1 V.
+2. Set the current setting of the power supply to a very low output. The objective here is to have the power supply to be current limited so as you can set the current flowing through your device.
+3. Connect the power supply to the diode (Fig. \@ref(fig:VIdiodesetup)) and start varying the current setting in the power supply to measure the forward voltage drop in your device. Do not rely on the power supply’s voltmeter for your measurement. 
+Use a digital multimeter (DMM) instead. This is because the power supply’s voltmeter is also reading the voltage drop across the “long” wires in your experimental setup.
+
+
+```{r VIdiodesetup, echo = FALSE, fig.cap="Experiment setup for diode characterization"}
+knitr::include_graphics("Figs/VIdiodesetup.svg", error = FALSE)
+```
+
+
+4. Perform the V-I measurements at ambient temperature. The power dissipated in the diode while you do the measurement will increase the temperature of the device. Take this into consideration when making your measurements. It is best to take a voltage reading with a short pulse at a given temperature to avoid data being skewed by self-heating.
+5. Compare the data obtained experimentally the data obtained in Sections \@ref(subsubsecVIst) and  \@ref(subusubsec:VISpicecomp).
+
+
+### Simplified simulation model {#subsub:Simpsimmod}
+The device model supplied by power semiconductor manufacturers is usually a complex physics-based model. 
+In power electronics, the power semiconductors are not used in the linear region, but as nonlinear switches. 
+Physics-based model can be accurate, but sometimes lead to convergence issues in the simulator, particularly in systems having several nonlinear devices. 
+Even without a convergence issue, using the manufacturer-provided model guarantees to slow down your simulation unnecessarily, sometimes even pointlessly.
+
+It is thus desirable to develop simplified simulation models that capture the essential loss mechanisms in the circuit but are not numerically intensive. 
+Figure \@ref(fig:vidiodesim) shows a simplified simulation model that captures the essential characteristics of the V-I curve of a diode. 
+Moreover, LTSPICE provides a simple way to enter the data of such a device in a very concise manner.
+
+
+```{r vidiodesim, echo = FALSE, fig.cap="Simplified simulation model for the diode."}
+knitr::include_graphics("Figs/vidiodesim.svg", error = FALSE)
+```
+
+This is how you enter the model for an idealized diode called “MyIdealDiode” with RON = 0.1 $\Omega$ and VFWD=0.4V. 
+In this example the diode D1 is connected to nodes SW and OUT.
+
+```
+D1 SW OUT MyIdealDiode
+.model MyIdealDiode D(Ron=.1 Roff=1Meg Vfwd=.4)
+```
+
+Using the measured data obtained in Section \@ref(subsubsec:VImeas)  do the following:
+
+- Propose values for RON and VFWD for the simplified simulation diode model of Fig. \@ref(fig:vidiodesim).
+- Write your very personal simplified diode model for future simulations.
+- Simulate your model to obtain the V-I curves.
+- Compare your model to the data obtained from the datasheet, the manufacturer SPICE model, and experimental measurement. As an example, Fig. \@ref(fig:vistall25) shows a comparison of the data available up to this point for the STPS8H100 at 25C.
+
+
+```{r vistall25, echo = FALSE, fig.cap="Comparison of the V-I Curves of the STPS8H100 diode at25◦C."}
+knitr::include_graphics("Figs/vi_st_all25.png", error = FALSE)
+```
+
+## MOSFET Characterization {#sub:Mosfet}
+### BSR202N MOSFET Characterization {#subsub:InfineonMos}
+
+The MOSFET used in this section is  the BSR202N (Figure \@ref(fig:MOSBSR202N)). 
+You can find the webpage for this MOSFET as well as a lin for the SPCE simulation model [here](https://www.infineon.com/cms/en/product/power/mosfet/-250v-600v-small-signal-small-power-mosfet/bsr202n/).
+
+```{r MOSBSR202N, echo = FALSE, fig.cap="BSR202N MOSFET manufactured by Infineon Technologies."}
+knitr::include_graphics("Figs/BSR202N.jpg", error = FALSE)
+```
+
+
+A power MOSFET is a 3-teminal device consisting of a gate, drain, and source (most power MOSFET s are vertical devices where the bulk is shorted to the source terminal). 
+The power MOSFET has an anti-parallel body diode which has the same current ratings of the MOSFET as it is intrinsic to the structure.
+
+In power electronics we operate the MOSFET as a switch, which corresponds to an operation between the _“triode”_ and the _“cut-off”_ region of the V-I curve of the MOSFET. 
+In the _“triode”_ region, we can think of the MOSFET as behaving like a voltage-controlled resistor. 
+The value of _“resistor”_ is a function of the gate-source voltage. 
+To minimize conduction loss in power electronics applications, we turn the  MOSFET on with as large _vgs_ as possible to minimize the equivalent RON. 
+The maximum allowed _Vgs_ can be found in a device’s datasheet and it is usually in the range of a few to low tens of volts in power devices. 
+Because of the body diode, current is able to flow from the source to the drain of the MOSFET regardless of whether a gate signal is present and only depending on the external circuit conditions. 
+Figure \@ref(fig:mosfetvisimp) shows a functional and simplified model of the MOSFET.
+
+
+```{r mosfetvisimp, echo = FALSE, fig.cap="Simplified model for a power MOSFET"}
+knitr::include_graphics("Figs/mosfetvisimp.svg", error = FALSE)
+```
+
+
+1. Obtain the V-I of the device from manufacturer device SPICE model. 
+Figure \@ref(fig:VIMOSFETSIMAmbient) shows the V-I curve obtained from the MOSFET model.
+
+```{r VIMOSFETSIMAmbient, echo = FALSE,  fig.cap="V-I curve from the manufacturer’s SPICEmodel of the IPA60R600P6 MOSFETas an example (again, it isa different device from BSR202N and is only shown as an example)"}
+knitr::include_graphics("Figs/ViMOSFET_SIMULATED_AMBIENT.png", error = FALSE)
+```
+
+
+2. Extract V-I curve data from the datasheet and compare to SPICE model.
+3. Extract V-I curve data from experimental measurements. 
+The setup to measure the V-I curve is shown in Fig. \@ref(fig:VIMosfetsetup). 
+When measuring the V-I characteristics of the anti-parallel diode, make sure the gate to source voltage of the MOSFET is zero to ensure that no current flows via the channel.
+
+```{r VIMosfetsetup, echo = FALSE, fig.cap="Experimental setup to measure the V-I Curve of a MOSFET."}
+knitr::include_graphics("Figs/VIMosfetsetup.svg", error = FALSE)
+```
+
+
+4. Develop a simplified simulation model and compare the V-I curves and the manufacturer’s SPICE model. 
+Figure \@ref(fig:idealswLTspice) explains how to use the ideal switch element in Figure \@ref(fig:mosfetvisimp).
+
+```{r idealswLTspice, echo = FALSE,  fig.cap="An example schematic drawing and the corresponding netlist. The schematic shows an ideal switch ‘S1’, agate drive voltage source ‘Vgatedriver’, and the definition of a switch model named ‘MyIdealSW’. The definition of‘MyIdealSW’ specifies the on-resistance of 0.02Ω, the off-resistance of 1 GΩ, the turn-on threshold of 0.5 V, and thehysteresis of 0.4 V in the turn-on threshold.  Later, you may change the on-time and the frequency of ‘Vgatedriver’to fit your purpose in lab sessions to come."}
+knitr::include_graphics("Figs/ideal_sw_LTspice.png", error = FALSE)
+```
+
+
+### FQT4N25TF MOSFET Characterization {#subusb:FQTMOS}
+Refer to the experiment procedure of \@ref(subsub:InfineonMos) to obtain two I-V curves, one from the measurement
+and another from your custom-made SPICE models, for a FQT4N25TF MOSFET (Figure \@ref(fig:FQT4N25TF)). 
+Be careful not to exceed the current limit as it is only rated for 0.83 A.
+
+```{r FQT4N25TF, echo = FALSE,  fig.cap="FQT4N25TF MOSFET manufactured by ON Semiconductor."}
+knitr::include_graphics("Figs/FQT4N25TF.jpg", error = FALSE)
+```
+
+
+
+## Effects of Temperature on MOSFETs and Diodes  {#sub:tempmeas}
+
+Switches increase in temperature from prolonged use, which greatly impacts the parasitic resistances of our equivalent models. 
+The FQT4N25TF has a body diode as well, so we will be using this part to determine the effects of temperature on MOSFETS and diodes.
+For the FQT4N25TF MOSFET do the following:
+
+1. Perform the V-I measurements at three different temperatures within the operational limits of the device (< 150C) than ambient temperature by using the hot plate, and compare them with the V-I measurements at ambient temperature you acquired in the previous section. 
+Use a clamp to keep the device from moving. 
+Do not rely on the hot plate’s temperature readout but use an infrared thermometer or thermal camera to verify the temperature. 
+**Safety first!**
+Be careful when making these measurements. 
+When using the hotplate, please leave a sign indicating the hot plate is _“hot”_ to avoid other people getting hurt.
+2. From V-I measurements, estimate the on-resistance Rdiode,ON, the forward voltage drop Vd,fwd of the anti-parallel diode, and the R DS,ON when the device is fully turned on. 
+Plot three V-I curves at three different temperatures. 
+When measuring the V-I characteristics of the anti-parallel diode, make sure the gate to source voltage of the MOSFET is zero to ensure that no current flows via the channel.
+3. Observe how RDS,ON , Rdiode,ON , V d,f wd change with temperature and derive a simple linear model for each parameter.
+4. Compare on a single plot the variation of RDS,ON with temperature to the data provided in the datasheet.
+5. Propose a way to incorporate the parameter temperature dependence into your LTspice model. 
+Use the device temperature as an input parameter.
+
+
+```{r clampex, echo =FALSE, fig.cap="An example of how to clamp up the MOSFET onto the hot plate.  Remember to be very careful and uselots of Kapton tape to make sure nothing is shorting!"}
+knitr::include_graphics("Figs/clamp_example.png", error = FALSE)
+```
+
+
+```{r vimosfetalltemp, echo = FALSE,  fig.cap="A comparison of the V-I Curves of the IPA60R600P6 at various temperatures."}
+knitr::include_graphics("Figs/vi_mosfet_alltemp.png", error = FALSE)
+```
