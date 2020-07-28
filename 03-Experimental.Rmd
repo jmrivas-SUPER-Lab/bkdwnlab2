@@ -35,11 +35,11 @@ need to run .DC analysis and it is possible to sweep two sources at a time.
 4. Export the LTSPICE data to a _.txt_ file
 
 
-Figure \@ref(fig:LTspiceVIcurve) shows the LTSPICE file and plot of the resulting V-I curves at 25$\circ$C. 
+Figure \@ref(fig:LTspiceVIcurve) shows the LTSPICE file and plot of the resulting V-I curves at 25$^\circ$C. 
 The temperaturessimulated were selected to match the data provided in the device datasheet.
 
 
-```{r LTspiceVIcurve, echo = FALSE, out.width = "70%", fig.align = 'center', fig.cap="LTSPICE file to obtain the simulated V-I curve of the STPS8H100 diode (it’s a different diode by the way, which we use only for an example).  .DC analysis is used to vary the amplitude of the input source to obtain the V-Icurve.  Note that the current in the simulation graph exceeds the diode’s rating.  You wouldn’t run such high currentthrough the device"}
+```{r LTspiceVIcurve, echo = FALSE, out.width = "90%", fig.align = 'center', fig.cap="LTSPICE file to obtain the simulated V-I curve of the STPS8H100 diode (it’s a different diode by the way, which we use only for an example).  The _.DC_ analysis is used to vary the amplitude of the input source to obtain the V-Icurve.  Note that the current in the simulation graph exceeds the diode’s rating.  You wouldn’t run such high current through the device"}
 knitr::include_graphics("Figs/LTspice_VIcurves_v2.png", error = FALSE)
 ```
 
